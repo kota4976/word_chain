@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>しりとりゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>しりとりゲーム</h1>
+
+    <div id="mode-selection-screen" class="screen">
+        <h2>ゲームモード選択</h2>
+        <div class="settings-area">
+            <label for="player-count-select-mode">対戦人数:</label>
+            <select id="player-count-select-mode">
+                <option value="1">1人</option>
+                <option value="2" selected>2人</option>
+                <option value="3">3人</option>
+                <option value="4">4人</option>
+            </select>
+
+            <label for="time-limit-select-mode">時間制限:</label>
+            <select id="time-limit-select-mode">
+                <option value="0">なし</option>
+                <option value="10" selected>10秒</option>
+                <option value="20">20秒</option>
+                <option value="30">30秒</option>
+            </select>
+
+            <label for="char-limit-select-mode">文字数制限:</label>
+            <select id="char-limit-select-mode">
+                <option value="0" selected>なし</option>
+                <option value="2">2文字まで</option>
+                <option value="3">3文字まで</option>
+                <option value="4">4文字まで</option>
+            </select>
+
+            <label for="consonant-match-mode-checkbox">特殊ルール (子音マッチ):</label>
+            <input type="checkbox" id="consonant-match-mode-checkbox">
+            <p class="small-text">※各プレイヤー1回ずつ使用可能</p>
+        </div>
+        <button id="start-game-button" class="action-button">ゲーム開始</button>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <div class="game-info">
+            <p>現在のプレイヤー: <span id="current-player">1</span></p>
+            <p>残り時間: <span id="time-left-display">--</span>秒</p>
+        </div>
+
+        <div class="display-area">
+            <p>前の単語：</p>
+            <div id="previous-word-display">しりとり</div>
+        </div>
+
+        <p id="message-area"></p>
+
+        <div class="input-area">
+            <input type="text" id="word-input" placeholder="ひらがなで入力" autocomplete="off"  title="ひらがなで入力してください">
+            <button id="submit-button">決定</button>
+        </div>
+
+        <div class="control-buttons">
+            <button id="pass-button">パス</button>
+            <button id="consonant-match-button" class="hidden">子音マッチを使用</button>
+            <button id="reset-button">モード選択に戻る</button>
+        </div>
+
+        <div class="history-area">
+            <h2>履歴</h2>
+            <ul id="history-list">
+            </ul>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/domElements.js"></script>
+    <script type="module" src="scripts/utils.js"></script>
+    <script type="module" src="scripts/gameLogic.js"></script>
+    <script type="module" src="scripts/eventListeners.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
